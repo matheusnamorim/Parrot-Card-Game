@@ -1,16 +1,36 @@
 let trava = false;
 while(trava === false){
-    const num = prompt("Digite o número de cartas");
+    alert("Digite valores pares no intervalo de 4 a 14");
+    const num = prompt("Digite o número de cartas que deseja jogar");
     if((num > 3 && num < 15) && num%2===0){ 
-        desenharCartas(num);
+        EmbaralharCartas(num);
         trava = true;
     }
 }
 
-function desenharCartas(num){
-    let cartas = document.querySelector(".MesaCartas");
-    
+function comparador() { 
+	return Math.random() - 0.5; 
+}
+
+function EmbaralharCartas(num){
+
+    let vetorObjetos = [];
+
     for(let i=0; i<num; i++){
-       cartas.innerHTML += `<div><img src="./assets/front.png"></div>` ;
-    }         
+       vetorObjetos.push(`<div><img src="./assets/front.png"></div>`) ;
+    }
+    
+    vetorObjetos.sort(comparador);
+    insere(vetorObjetos);
+
+}
+
+function insere(vetorObjetos){
+    
+    let cartas = document.querySelector(".MesaCartas");
+
+    for(let i=0; i<vetorObjetos.length; i++){
+        cartas.innerHTML += vetorObjetos[i];
+    }
+
 }
