@@ -30,10 +30,8 @@ body{
     justify-content: center;
 }
 
-.MesaCartas > div{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.card{
+    position: relative;
     width: 117px;
     height: 146px;
     margin: 0 17px 17px 17px;
@@ -42,9 +40,40 @@ body{
     border: 1px solid #99CEA8;
 }
 
-.MesaCartas img{
+.face{
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+}
+
+.back-face,
+.front{
+    width: 100%;
+    height: 100%;
+}
+.back-face,
+.front{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-face img,
+.front img{
     width: 100px;
     height: 100px;
+}
+.front{
+    transform: rotateY(180deg);
+}
+
+.rodarFace {
+    transform: rotateY(-180deg);
+}
+
+.virarFace {
+    transform: rotateY(0deg);
 }
 
 @media (max-width: 540px){
