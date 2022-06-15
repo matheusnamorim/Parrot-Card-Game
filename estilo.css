@@ -2,4 +2,53 @@
 
 body{
     font-family: 'Roboto', sans-serif; 
+    background-color:#E5E5E5;
+}
+
+.container{
+    width: 100%;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.topo{
+    text-align: center;
+    font-size: 56px;
+    height: 63px;
+    font-weight: 700;
+    color: #75B79E;
+    margin-bottom: 47px;
+}
+
+.MesaCartas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.MesaCartas > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 117px;
+    height: 146px;
+    margin: 0 17px 17px 17px;
+    background-color: #A7E9AF;
+}
+
+.MesaCartas img{
+    width: 100px;
+    height: 100px;
+}
+
+@media (max-width: 540px){
+
+.topo{
+    font-size: 36px;
+}
+
 }
