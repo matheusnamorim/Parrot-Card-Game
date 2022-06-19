@@ -30,6 +30,10 @@ body{
     justify-content: center;
 }
 
+.MesaCartas p{
+    opacity: 0;
+}
+
 .card{
     position: relative;
     width: 117px;
@@ -73,6 +77,14 @@ body{
 }
 
 .virarFace {
+    transform: rotateY(0deg);
+}
+
+.rodarFaceRevelada {
+    transform: rotateY(-180deg);
+}
+
+.virarFaceRevelada {
     transform: rotateY(0deg);
 }
 
