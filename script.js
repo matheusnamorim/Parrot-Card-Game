@@ -28,11 +28,13 @@ function comparador() {
 function virar(elemento){
     cont++;
     let virar = elemento.children;
-
-    virar[0].classList.add("virarFace");
-    virar[1].classList.add("rodarFace");    
+    if(virar[0].classList.contains("virarFace") !== true && virar[0].classList.contains("virarFaceRevelada") !== true){
+        virar[0].classList.add("virarFace");
+        virar[1].classList.add("rodarFace");    
+    }
 
     testarPar();
+    testaFimJogo();
 }
 
 function cartaRevelada(carta1, carta2){
@@ -89,4 +91,9 @@ function insere(vetorObjetos){
         cartas.innerHTML += vetorObjetos[i];
     }
 
+}
+
+function testaFimJogo(){
+    const cartasReveladas = document.querySelectorAll(".virarFaceRevelada");
+    if(cartasReveladas.length === Number(num)) alert(`Você ganhou em ${num} jogadas!`);
 }
