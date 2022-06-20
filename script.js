@@ -19,6 +19,7 @@ function Inicio(){
     cont = 0;
     contador = 0;
     document.querySelector(".relogio").innerHTML = `00`;
+    document.querySelector(".tamparClick").classList.add("escondido");
     while(trava === false){
         
         num = prompt("Digite o número de cartas que deseja jogar\nRegras:\n-Valores pares\n-Valores no intervalo de 4 a 14");
@@ -115,13 +116,30 @@ function insere(vetorObjetos){
 function testaFimJogo(){
     const cartasReveladas = document.querySelectorAll(".virarFaceRevelada");
     if(cartasReveladas.length === Number(num)) {
-        alert(`Você ganhou em ${cont} jogadas e ${contador} segundos!`);
+        document.querySelector(".tamparClick").classList.remove("escondido");
         clearInterval(idInterval);
-        const jogarNovamente = prompt("Gostaria de jogar de novo?\nDigite sim ou não!"); 
-        if(jogarNovamente === "sim") Inicio();
+        finalJogo();
     }
 }
 
+function finalJogo(){
+    setTimeout(function(){
+        alert(`Você ganhou em ${cont} jogadas e ${contador} segundos!`);
+        reiniciarJogo();
+    }, 1000);
+}
+
+function reiniciarJogo(){
+    let jogarNovamente;
+    while(jogarNovamente != "sim" && jogarNovamente != "não"){
+        jogarNovamente = prompt("Gostaria de jogar de novo?\nDigite sim ou não!");
+        if(jogarNovamente === "sim") Inicio();
+        if(jogarNovamente === "não"){
+            break;
+        }
+    }
+}
+    
 function relogio(){
     contador++;
     if(contador < 10) document.querySelector(".relogio").innerHTML = `0${contador}`;
