@@ -2,7 +2,7 @@
 
 body{
     font-family: 'Roboto', sans-serif; 
-    background-color:#E5E5E5;
+    background-color:#edf6c0;
 }
 
 .container{
@@ -23,6 +23,20 @@ body{
     margin-bottom: 47px;
 }
 
+.relogio{
+    position: fixed;
+    z-index: 1;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    color: black;
+    border-radius: 5px;
+    padding: 3px;
+    border: 1px solid #99CEA8;
+}
+
 .MesaCartas {
     display: flex;
     flex-wrap: wrap;
@@ -39,7 +53,7 @@ body{
     width: 117px;
     height: 146px;
     margin: 0 17px 17px 17px;
-    background-color: #99CEA8;
+    background-color: #A7E9AF;
     border-radius: 5px;
     border: 1px solid #99CEA8;
 }
@@ -88,7 +102,7 @@ body{
     transform: rotateY(0deg);
 }
 
-@media (max-width: 540px){
+@media (max-width: 614px){
 
 .topo{
     font-size: 36px;

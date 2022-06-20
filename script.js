@@ -1,6 +1,8 @@
 let trava = false;
 let cont = 0;
 let num;
+let contador = 0;
+let idInterval;
 
 const GifsParrots = [
     "bobrossparrot.gif", 
@@ -11,13 +13,21 @@ const GifsParrots = [
     "tripletsparrot.gif",
     "unicornparrot.gif"
 ];
-
-while(trava === false){
-    alert("Digite valores pares no intervalo de 4 a 14");
-    num = prompt("Digite o número de cartas que deseja jogar");
-    if((num > 3 && num < 15) && num%2===0){ 
-        EmbaralharCartas(num);
-        trava = true;
+Inicio();
+function Inicio(){
+    trava = false;
+    cont = 0;
+    contador = 0;
+    document.querySelector(".relogio").innerHTML = `00`;
+    while(trava === false){
+        
+        num = prompt("Digite o número de cartas que deseja jogar\nRegras:\n-Valores pares\n-Valores no intervalo de 4 a 14");
+        if((num > 3 && num < 15) && num%2===0){ 
+            EmbaralharCartas(num);
+            trava = true;
+            break;
+        }
+        alert("Digite apenas valores pares no intervalo de 4 a 14");
     }
 }
 
@@ -26,15 +36,18 @@ function comparador() {
 }
 
 function virar(elemento){
-    cont++;
     let virar = elemento.children;
-    if(virar[0].classList.contains("virarFace") !== true && virar[0].classList.contains("virarFaceRevelada") !== true){
-        virar[0].classList.add("virarFace");
-        virar[1].classList.add("rodarFace");    
+    
+    if(document.querySelectorAll(".virarFace").length <= 1){
+        if(virar[0].classList.contains("virarFace") !== true && virar[0].classList.contains("virarFaceRevelada") !== true){
+            cont++;
+            virar[0].classList.add("virarFace");
+            virar[1].classList.add("rodarFace");    
+        }
+        if(cont === 1) idInterval = setInterval(relogio, 1000);
+        testarPar();
+        testaFimJogo();
     }
-
-    testarPar();
-    testaFimJogo();
 }
 
 function cartaRevelada(carta1, carta2){
@@ -85,8 +98,14 @@ function EmbaralharCartas(num){
 
 function insere(vetorObjetos){
     
-    let cartas = document.querySelector(".MesaCartas");
-
+    let cartas = document.querySelector(".MesaCartas"); 
+    const qtd = document.querySelectorAll(".card");
+    if(qtd.length != 0){
+        for(let i=0; i<qtd.length; i++) {  
+            const no = document.querySelector(".card");
+            no.parentNode.removeChild(no);
+        }
+    }
     for(let i=0; i<vetorObjetos.length; i++){
         cartas.innerHTML += vetorObjetos[i];
     }
@@ -95,5 +114,16 @@ function insere(vetorObjetos){
 
 function testaFimJogo(){
     const cartasReveladas = document.querySelectorAll(".virarFaceRevelada");
-    if(cartasReveladas.length === Number(num)) alert(`Você ganhou em ${num} jogadas!`);
+    if(cartasReveladas.length === Number(num)) {
+        alert(`Você ganhou em ${cont} jogadas e ${contador} segundos!`);
+        clearInterval(idInterval);
+        const jogarNovamente = prompt("Gostaria de jogar de novo?\nDigite sim ou não!"); 
+        if(jogarNovamente === "sim") Inicio();
+    }
+}
+
+function relogio(){
+    contador++;
+    if(contador < 10) document.querySelector(".relogio").innerHTML = `0${contador}`;
+    else document.querySelector(".relogio").innerHTML = contador;
 }
