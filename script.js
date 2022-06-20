@@ -133,10 +133,14 @@ function reiniciarJogo(){
     let jogarNovamente;
     while(jogarNovamente != "sim" && jogarNovamente != "não"){
         jogarNovamente = prompt("Gostaria de jogar de novo?\nDigite sim ou não!");
-        if(jogarNovamente === "sim") Inicio();
+        if(jogarNovamente === "sim") {
+            Inicio();
+            break;
+        }
         if(jogarNovamente === "não"){
             break;
         }
+        alert("Digite APENAS sim ou não, com todas as letras minúsculas e acentuação correta.");
     }
 }
     
