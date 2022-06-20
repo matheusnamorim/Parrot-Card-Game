@@ -53,53 +53,55 @@ body{
     width: 117px;
     height: 146px;
     margin: 0 17px 17px 17px;
-    background-color: #A7E9AF;
-    border-radius: 5px;
-    border: 1px solid #99CEA8;
 }
 
 .face{
     position: absolute;
     backface-visibility: hidden;
-    transition: all .5s;
+    transition: all .7s;
     transform-style: preserve-3d;
 }
 
 .back-face,
-.front{
+.front-face{
     width: 100%;
     height: 100%;
+    background-color: #A7E9AF;
+    border-radius: 5px;
+    border: 1px solid #99CEA8;
 }
+
 .back-face,
-.front{
+.front-face{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .back-face img,
-.front img{
+.front-face img{
     width: 100px;
     height: 100px;
 }
-.front{
+
+.back-face{
     transform: rotateY(180deg);
 }
 
 .rodarFace {
-    transform: rotateY(-180deg);
+    transform: rotateY(0deg);
 }
 
 .virarFace {
-    transform: rotateY(0deg);
-}
-
-.rodarFaceRevelada {
     transform: rotateY(-180deg);
 }
 
-.virarFaceRevelada {
+.rodarFaceRevelada {
     transform: rotateY(0deg);
+}
+
+.virarFaceRevelada {
+    transform: rotateY(-180deg);
 }
 
 .tamparClick{

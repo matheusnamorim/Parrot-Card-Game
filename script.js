@@ -88,7 +88,7 @@ function EmbaralharCartas(num){
     let cont=0;
 
     for(let i=0; i<num; i++){
-       vetorObjetos.push(`<div class="card" onclick="virar(this);"><div class="front face"><img src="./assets/${GifsParrots[cont]}"></div><div class="back-face face"><img src="./assets/front.png"></div><p>${cont}</p></div>`) ;
+       vetorObjetos.push(`<div class="card" onclick="virar(this);"><div class="front-face face"><img src="./assets/front.png"></div><div class="back-face face"><img src="./assets/${GifsParrots[cont]}"></div><p>${cont}</p></div>`) ;
        if((i+1)%2===0) cont++;
     }
     
